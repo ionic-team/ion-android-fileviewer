@@ -1,4 +1,4 @@
-package io.ionic.libs.ionfileviewerlib.ion-android
+package io.ionic.libs.ionfileviewerlib
 
 import org.junit.Test
 
