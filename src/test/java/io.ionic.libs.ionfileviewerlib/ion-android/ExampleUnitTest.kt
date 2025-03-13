@@ -1,4 +1,4 @@
-package organizationidplaceholder.libtemplateplaceholder
+package io.ionic.libs.ionfileviewerlib.ion-android
 
 import org.junit.Test
 
