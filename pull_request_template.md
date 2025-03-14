@@ -1,10 +1,6 @@
 ## Description
 <!--- Describe your changes in detail -->
 
-## Context
-<!--- Why is this change required? What problem does it solve? -->
-<!--- Place the link to the issue here -->
-
 ## Type of changes
 <!--- What types of changes does your code introduce? Put an `x` in all the boxes that apply -->
 - [ ] Fix (non-breaking change which fixes an issue)
