@@ -1,5 +1,9 @@
 package io.ionic.libs.ionfileviewerlib.model
 
+/**
+ * The available exceptions that the File Viewer library can return.
+ * Some of the exceptions can return a cause in case it was triggered by another source (e.g. Android OS)
+ */
 sealed class IONFLVWException(
     override val message: String,
     override val cause: Throwable? = null
