@@ -1,30 +1,5 @@
 # ion-android-fileviewer
 
-File viewer native Android library ⚡️
-
-Documentation to be added.
-
-
-```xml
-<manifest>
-    <!-- permissions and other -->
-    <application>
-        <!-- activities and other declarations... -->
-        <provider
-            android:name="io.ionic.libs.ionfileviewerlib.IONFLVWFileProvider"
-            android:authorities="${applicationId}.opener.provider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/ionfileviewer_paths" />
-        </provider>
-    </application>
-</manifest>
-```
-
-# ion-android-fileviewer
-
 The `ion-android-fileviewer` is a library built using `Kotlin` that wraps Android `Intent` to and view files.
 
 Use the `IONFLVWController` class to open files, from local paths, app's assets, and remote URL's.
@@ -56,6 +31,25 @@ In your app-level gradle file, import the `ion-android-fileviewer` library like 
 dependencies {
     implementation("io.ionic.libs:ionfileviewer-android:1.0.0")
 }
+```
+
+Then, on your application's `AndroidManifest.xml`, add the following `provider` inside `application`, like so:
+```xml
+<manifest>
+    <!-- permissions... -->
+    <application>
+        <!-- activities and other declarations... -->
+        <provider
+            android:name="io.ionic.libs.ionfileviewerlib.IONFLVWFileProvider"
+            android:authorities="${applicationId}.opener.provider"
+            android:exported="false"
+            android:grantUriPermissions="true">
+            <meta-data
+                android:name="android.support.FILE_PROVIDER_PATHS"
+                android:resource="@xml/ionfileviewer_paths" />
+        </provider>
+    </application>
+</manifest>
 ```
 
 ## Methods
