@@ -1,6 +1,6 @@
 # ion-android-fileviewer
 
-The `ion-android-fileviewer` is a library built using `Kotlin` that wraps Android `Intent` to and view files.
+The `ion-android-fileviewer` is a library built using `Kotlin` that uses Android Intents to view files.
 
 Use the `IONFLVWController` class to open files, from local paths, app's assets, and remote URL's.
 

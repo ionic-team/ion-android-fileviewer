@@ -41,8 +41,7 @@ class IONFLVWController internal constructor(
         if (!inputsValidator.isPathValid(filePath)) {
             throw IONFLVWException.InvalidPath(filePath)
         }
-        val filePathNoSpaces: String =
-            filePath.replace("%20".toRegex(), "\\ ").replace(" ".toRegex(), "\\ ")
+        val filePathNoSpaces: String = filePath.replace("%20| ".toRegex(), "\\ ")
         openDocumentHelper.openDocumentFromLocalPath(activity, filePathNoSpaces)
     }
 

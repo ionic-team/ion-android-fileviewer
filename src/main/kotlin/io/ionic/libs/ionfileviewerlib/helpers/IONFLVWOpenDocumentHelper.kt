@@ -25,23 +25,22 @@ internal class IONFLVWOpenDocumentHelper {
     fun openDocumentFromLocalPath(activity: Activity, filePath: String) {
         val mimeType = getMimeType(filePath)
         val file = File(filePath.replace("file:///", ""))
-
-        if (file.exists()) {
-            val contentUri = FileProvider.getUriForFile(
-                activity.applicationContext,
-                activity.contentProviderAuthority,
-                file
-            )
-
-            val intent = Intent(Intent.ACTION_VIEW)
-            intent.setDataAndType(contentUri, mimeType)
-            intent.setFlags(Intent.FLAG_ACTIVITY_NO_HISTORY)
-            intent.setFlags(Intent.FLAG_GRANT_READ_URI_PERMISSION)
-
-            activity.startActivity(intent)
-        } else {
+        if (!file.exists()) {
             throw FileNotFoundException()
         }
+
+        val contentUri = FileProvider.getUriForFile(
+            activity.applicationContext,
+            activity.contentProviderAuthority,
+            file
+        )
+
+        val intent = Intent(Intent.ACTION_VIEW).apply {
+            setDataAndType(contentUri, mimeType)
+            flags = Intent.FLAG_ACTIVITY_NO_HISTORY or Intent.FLAG_GRANT_READ_URI_PERMISSION
+        }
+
+        activity.startActivity(intent)
     }
 
     /**
@@ -63,12 +62,8 @@ internal class IONFLVWOpenDocumentHelper {
      * @param filePath the full path to file
      * @return the mimeType or null if it was unable to determine
      */
-    private fun getMimeType(filePath: String?): String? {
-        var type: String? = null
-        val extension = MimeTypeMap.getFileExtensionFromUrl(filePath)
-        if (extension != null) {
-            type = MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension)
+    private fun getMimeType(filePath: String?): String? =
+        MimeTypeMap.getFileExtensionFromUrl(filePath)?.let { extension ->
+            MimeTypeMap.getSingleton().getMimeTypeFromExtension(extension)
         }
-        return type
-    }
 }

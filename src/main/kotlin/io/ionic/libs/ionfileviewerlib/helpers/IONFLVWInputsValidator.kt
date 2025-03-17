@@ -21,8 +21,7 @@ class IONFLVWInputsValidator {
     fun isURLValid(url: String): Boolean {
         val pattern =
             Pattern.compile("http[s]?://(([^/:.[:space:]]+(.[^/:.[:space:]]+)*)|([0-9](.[0-9]{3})))(:[0-9]+)?((/[^?#[:space:]]+)([^#[:space:]]+)?(#.+)?)?")
-        val matcher = pattern.matcher(url)
-        return matcher.find()
+        return pattern.matcher(url).find()
     }
 
     /**
