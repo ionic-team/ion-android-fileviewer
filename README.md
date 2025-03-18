@@ -21,7 +21,7 @@ Use the `IONFLVWController` class to open files, from local paths, app's assets,
 
 ## Motivation
 
-This library is used by File Viewer Plugins - for both [OutSystems' Cordova Plugin](https://github.com/ionic-team/cordova-outsystems-fileviewer) and [Ionic's Capacitor Plugin](https://github.com/ionic-team/capacitor-file-viewer).
+This library is used by File Viewer Plugins - for both [OutSystems' Cordova Plugin](https://github.com/ionic-team/cordova-outsystems-file-viewer) and [Ionic's Capacitor Plugin](https://github.com/ionic-team/capacitor-file-viewer).
 
 ## Usage
 
