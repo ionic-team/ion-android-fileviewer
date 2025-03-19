@@ -14,7 +14,6 @@ Use the `IONFLVWController` class to open files, from local paths, app's assets,
     - [Open document from a remote URL](#open-document-from-a-remote-url)
     - [Open document from app's assets](#open-document-from-apps-assets)
 - [Errors](#errors)
-- [Troubleshooting](#troubleshooting)
 - [Contributing](#contributing)
 - [License](#license)
 - [Support](#support)
@@ -31,25 +30,6 @@ In your app-level gradle file, import the `ion-android-fileviewer` library like 
 dependencies {
     implementation("io.ionic.libs:ionfileviewer-android:1.0.0")
 }
-```
-
-Then, on your application's `AndroidManifest.xml`, add the following `provider` inside `application`, like so:
-```xml
-<manifest>
-    <!-- permissions... -->
-    <application>
-        <!-- activities and other declarations... -->
-        <provider
-            android:name="io.ionic.libs.ionfileviewerlib.IONFLVWFileProvider"
-            android:authorities="${applicationId}.opener.provider"
-            android:exported="false"
-            android:grantUriPermissions="true">
-            <meta-data
-                android:name="android.support.FILE_PROVIDER_PATHS"
-                android:resource="@xml/ionfileviewer_paths" />
-        </provider>
-    </application>
-</manifest>
 ```
 
 ## Methods
