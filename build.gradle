@@ -64,7 +64,8 @@ android {
         jvmTarget = '17'
     }
 
-    task jacocoTestReport(type: JacocoReport, dependsOn: ['testDebugUnitTest']) {
+    tasks.register('jacocoTestReport', JacocoReport) {
+        dependsOn['testDebugUnitTest']
 
         reports {
             xml.getRequired().set(true)
@@ -72,15 +73,25 @@ android {
         }
 
         def fileFilter = ['**/BuildConfig.*', '**/Manifest*.*']
-        def debugTree = fileTree(dir: "${buildDir}/tmp/kotlin-classes/debugUnitTest", excludes: fileFilter)
-        def mainSrc = "${project.projectDir}/src/main/java"
+        def debugTree = fileTree(dir: "${layout.buildDirectory}/tmp/kotlin-classes/debugUnitTest", excludes: fileFilter)
+        def mainSrc = "${project.projectDir}/src/main/kotlin"
 
         sourceDirectories.setFrom(files([mainSrc]))
         classDirectories.setFrom(files([debugTree]))
-        executionData.setFrom(fileTree(dir: "$buildDir", includes: [
+        executionData.setFrom(fileTree(dir: "${layout.buildDirectory}", includes: [
                 "jacoco/testDebugUnitTest.exec",
                 "outputs/code-coverage/connected/*coverage.ec"
         ]))
+    }
+
+    packagingOptions {
+        resources {
+            excludes += '/META-INF/{AL2.0,LGPL2.1}'
+        }
+    }
+
+    publishing {
+        singleVariant("release")
     }
 }
 
