@@ -7,7 +7,6 @@ import io.ionic.libs.ionfileviewerlib.helpers.IONFLVWInputsValidator
 import io.ionic.libs.ionfileviewerlib.helpers.IONFLVWOpenDocumentHelper
 import io.ionic.libs.ionfileviewerlib.helpers.runCatchingIONFLVWExceptions
 import io.ionic.libs.ionfileviewerlib.model.IONFLVWException
-import kotlin.concurrent.thread
 
 /**
  * Entry point in IONFileViewerLib-Android
@@ -41,8 +40,8 @@ class IONFLVWController internal constructor(
         if (!inputsValidator.isPathValid(filePath)) {
             throw IONFLVWException.InvalidPath(filePath)
         }
-        val filePathNoSpaces: String = filePath.replace("%20| ".toRegex(), "\\ ")
-        openDocumentHelper.openDocumentFromLocalPath(activity, filePathNoSpaces)
+        val filePathNormalized: String = inputsValidator.normalizeFilePath(filePath)
+        openDocumentHelper.openDocumentFromLocalPath(activity, filePathNormalized)
     }
 
     /**

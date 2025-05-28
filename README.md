@@ -28,7 +28,7 @@ In your app-level gradle file, import the `ion-android-fileviewer` library like 
 
 ```
 dependencies {
-    implementation("io.ionic.libs:ionfileviewer-android:1.0.0")
+    implementation("io.ionic.libs:ionfileviewer-android:1.0.1")
 }
 ```
 
