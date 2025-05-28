@@ -3,9 +3,9 @@ package io.ionic.libs.ionfileviewerlib.helpers
 import android.app.Activity
 import android.content.ActivityNotFoundException
 import android.content.Intent
-import android.net.Uri
 import android.webkit.MimeTypeMap
 import androidx.core.content.FileProvider
+import androidx.core.net.toUri
 import java.io.File
 import java.io.FileNotFoundException
 
@@ -52,7 +52,7 @@ internal class IONFLVWOpenDocumentHelper {
      */
     @Throws(ActivityNotFoundException::class)
     fun openDocumentFromURL(activity: Activity, url: String) {
-        val intent = Intent(Intent.ACTION_VIEW, Uri.parse(url))
+        val intent = Intent(Intent.ACTION_VIEW, url.toUri())
         activity.startActivity(intent)
     }
 

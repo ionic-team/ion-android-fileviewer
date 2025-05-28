@@ -1,6 +1,9 @@
 package io.ionic.libs.ionfileviewerlib.helpers
 
+import android.net.Uri
 import android.os.Looper
+import androidx.core.net.toUri
+import io.ionic.libs.ionfileviewerlib.model.IONFLVWException
 import java.util.regex.Pattern
 
 class IONFLVWInputsValidator {
@@ -29,4 +32,17 @@ class IONFLVWInputsValidator {
      * @return true if in main thread, false otherwise
      */
     fun isInMainThread(): Boolean = Looper.getMainLooper().isCurrentThread
+
+    /**
+     * Normalizes a file path before opening it.
+     * This means verifying the fields are URL decoded, while making sure we're not trying to decode already decoded fields
+     *
+     * @param filePath the file path to normalize
+     * @throws IONFLVWException.InvalidPath if unable to normalize the file path
+     * @return the normalized file path, with special characters decoded.
+     */
+    fun normalizeFilePath(filePath: String): String {
+        val filePathToNormalize = Uri.encode(Uri.decode(filePath))
+        return filePathToNormalize.toUri().path ?: throw IONFLVWException.InvalidPath(filePath)
+    }
 }
