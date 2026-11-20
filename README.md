@@ -24,11 +24,13 @@ This library is used by File Viewer Plugins - for both [OutSystems' Cordova Plug
 
 ## Usage
 
+> Replace ${version to use} below with the version you want to use. Check the Releases page for available versions.
+
 In your app-level gradle file, import the `ion-android-fileviewer` library like so:
 
 ```
 dependencies {
-    implementation("io.ionic.libs:ionfileviewer-android:1.0.3")
+    implementation("io.ionic.libs:ionfileviewer-android:${version to use}")
 }
 ```
 
